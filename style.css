@@ -1,0 +1,71 @@
+.background {
+    background-color: rgba(244, 241, 222, 1);
+}
+
+.description {
+    width: 40%;
+    margin: 15px;
+    font-size: 1.7vh;
+}
+
+.stats {
+    width: 30vw;
+    margin: 1.5vh;
+}
+
+.average {
+    text-align: left;
+    margin: 10px;
+    font-size: 20px;
+}
+
+.accuracy {
+    text-align: left;
+    margin: 10px;
+}
+
+.keyrow {
+    display: flex;
+    height: 16vh;
+    justify-content: center;
+
+}
+
+.genkey {
+    font-size: 10vh;
+    text-align: center;
+}
+
+.begin {
+    background-color: rgba(61, 64, 91, 0.1);
+    border-radius: .5rem;
+    width: 10rem;
+    margin: auto;
+}
+
+.key {
+    margin: 1.5vh;
+    text-align: center;
+    width: 15vh;
+    transition: all 0.05s;
+    background-color: rgba(61, 64, 91, 0.1);
+    border-radius: .5rem;
+}
+
+.key > span {
+    font-size: 5vh;
+}
+
+.key > div {
+    font-size: 20px;
+    padding-top: 20px;
+}
+
+.active {
+    border-color: yellow;
+}
+
+.reload-div {
+    text-align: right;
+    margin: 10px;
+}

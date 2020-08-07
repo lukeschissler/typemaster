@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Typing</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="background">
+    <div class="reload-div">
+        <button type="button" class="btn btn-dark" onclick="reloadFun()">Reset</button>
+    </div>
+    <div class="keyrow">
+        <div class="key" data-key="Q">
+            <span>Q</span>
+            <div></div>
+        </div>
+        <div class="key" data-key="W">
+            <span>W</span>
+            <div></div>
+        </div>
+        <div class="key"data-key="E">
+            <span>E</span>
+            <div></div>
+        </div>
+        <div class="key" data-key="R">
+            <span>R</span>
+            <div></div>
+        </div>
+        <div class="key" data-key="T">
+            <span>T</span>
+            <div></div>
+        </div>
+        <div class="key" data-key="Y">
+            <span>Y</span>
+            <div></div>
+        </div>
+        <div class="key" data-key="U">
+            <span>U</span>
+            <div></div>
+        </div>
+        <div class="key" data-key="I">
+            <span>I</span>
+            <div></div>
+        </div>
+        <div class="key" data-key="O">
+            <span>O</span>
+            <div></div>
+        </div>
+        <div class="key" data-key="P">
+            <span>P</span>
+            <div></div>
+        </div>
+    </div>
+    <div class="keyrow">
+        <div class="key" data-key="A">
+            <span>A</span>
+            <div></div>
+        </div>
+        <div class="key" data-key="S">
+            <span>S</span>
+            <div></div>
+        </div>
+        <div class="key" data-key="D">
+            <span>D</span>
+            <div></div>
+        </div>
+        <div class="key" data-key="F">
+            <span>F</span>
+            <div></div>
+        </div>
+        <div class="key" data-key="G">
+            <span>G</span>
+            <div></div>
+        </div>
+        <div class="key" data-key="H">
+            <span>H</span>
+            <div></div>
+        </div>
+        <div class="key" data-key="J">
+            <span>J</span>
+            <div></div>
+        </div>
+        <div class="key" data-key="K">
+            <span>K</span>
+            <div></div>
+        </div>
+        <div class="key" data-key="L">
+            <span>L</span>
+            <div></div>
+        </div>
+    </div>
+    <div class="keyrow">
+        <div class="key" data-key="Z">
+            <span>Z</span>
+            <div></div>
+        </div>
+        <div class="key" data-key="X">
+            <span>X</span>
+            <div></div>
+        </div>
+        <div class="key" data-key="C">
+            <span>C</span>
+            <div></div>
+        </div>
+        <div class="key" data-key="V">
+            <span>V</span>
+            <div></div>
+        </div>
+        <div class="key" data-key="B">
+            <span>B</span>
+            <div></div>
+        </div>
+        <div class="key" data-key="N">
+            <span>N</span>
+            <div></div>
+        </div>
+        <div class="key" data-key="M">
+            <span>M</span>
+            <div></div>
+        </div>
+
+    </div>
+    <div class="stats">
+        <div class="average">
+            <span> 0ms Average Time Between Keystrokes </span> <br>
+        </div>
+        <div class="accuracy">
+            <span> Percentage Accuracy </span>
+        </div>
+    </div>
+    <div class="genkey">
+        Start typing to begin!
+    </div>
+    <div class="description">
+        Court stenographers type at speeds of 200wpm. You probably can't, but you should try anyway! <br>
+        Try to match the letter displayed on the screen. Correct answers contribute
+        to your accuracy score. The speed measurement of each key measures how fast you clicked it from your prior key.
+        Keys above your average appear green, below that they appear red. The stronger the color, the farther from the
+        average. <br>
+        If you would like to restart, reload the page or click the button on the top right. Good Luck!
+    </div>
+
+<script>
+
+    let charMap = {
+        "Q": { time : [],
+            avg : 0 },
+        "W": { time : [],
+            avg : 0 },
+        "E": { time : [],
+            avg : 0 },
+        "R": { time : [],
+            avg : 0 },
+        "T": { time : [],
+            avg : 0 },
+        "Y": { time : [],
+            avg : 0 },
+        "U": { time : [],
+            avg : 0 },
+        "I": { time : [],
+            avg : 0 },
+        "O": { time : [],
+            avg : 0 },
+        "P": { time : [],
+            avg : 0 },
+        "A": { time : [],
+            avg : 0 },
+        "S": { time : [],
+            avg : 0 },
+        "D": { time : [],
+            avg : 0 },
+        "F": { time : [],
+            avg : 0 },
+        "G": { time : [],
+            avg : 0 },
+        "H": { time : [],
+            avg : 0 },
+        "J": { time : [],
+            avg : 0 },
+        "K": { time : [],
+            avg : 0 },
+        "L": { time : [],
+            avg : 0 },
+        "Z": { time : [],
+            avg : 0 },
+        "X": { time : [],
+            avg : 0 },
+        "C": { time : [],
+            avg : 0 },
+        "V": { time : [],
+            avg : 0 },
+        "B": { time : [],
+            avg : 0 },
+        "N": { time : [],
+            avg : 0 },
+        "M": { time : [],
+            avg : 0 }
+    };
+    let currDate = {
+        time : new Date(),
+        iter : 0,
+    }
+
+    let accuracy = [];
+
+    let alpha = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T",
+        "U", "V", "W", "X", "Y", "Z"];
+
+    function reloadFun() {
+        location.reload();
+    }
+
+    function totalAverage() {
+        let sum = [];
+        for (let [key, value] of Object.entries(charMap)) {
+            sum.push(...value.time);
+        }
+        return sum.reduce((sum, current) => sum + current, 0)/sum.length;
+    }
+
+    function establishGradient() {
+        const keyTimings = [];
+        for (let key in charMap) {
+            let currAvg = charMap[key].avg;
+
+            if (currAvg !== 0) {
+                keyTimings.push(charMap[key].avg);
+            }
+        }
+        let hiAvg = Math.max.apply(Math, keyTimings);
+        let loAvg = Math.min.apply(Math, keyTimings);
+
+        return [hiAvg, loAvg];
+    }
+
+    function keyAverage(k) {
+        const keyArray = charMap[k].time;
+        return keyArray.reduce((sum, current) => sum + current, 0)/keyArray.length;
+    }
+
+    function updateAverage(newAverage) {
+        if (!newAverage) return;
+
+        let averageDiv = document.querySelector('.average');
+
+        averageDiv.innerHTML = "";
+
+        let newDiv = `
+        <span> ${Math.round(newAverage)}ms Average Time Between Keystrokes </span>
+        `;
+        averageDiv.insertAdjacentHTML('beforeend', newDiv);
+    }
+
+    function updateAccuracy() {
+        let newAcc = Math.round((accuracy.reduce((sum, current) => sum + current, 0)/accuracy.length) * 100)
+
+        let accuracyDiv = document.querySelector('.accuracy');
+
+        accuracyDiv.innerHTML =""
+
+        let newDiv = `
+        <span> ${newAcc}% Accurate </span>
+        `
+        accuracyDiv.insertAdjacentHTML('beforeend', newDiv);
+    }
+
+    function judgeKey(key, hi, lo) {
+        if (charMap[key.dataset.key].time.length === 0) return;
+        keyValue = key.dataset.key
+        keyAvg = keyAverage(keyValue);
+
+        scaled = Math.abs(1-(keyAvg-lo)/(hi-lo));
+        if (scaled > 0.5) {
+            key.style['background-color'] = `rgba(129, 178, 154, ${scaled})`
+        } else {
+            scaled = Math.abs((scaled * 2) - 1)
+            console.log(key, scaled)
+            key.style['background-color'] = `rgba(224, 122, 95, ${scaled})`
+        }
+
+        charMap[key.dataset.key].avg = keyAvg
+
+        const newAvg = `
+        <div> ${Math.round(keyAvg)}ms </div>
+        `
+
+        key.children[1].remove();
+        key.children[0].insertAdjacentHTML('afterend', newAvg);
+    }
+
+    function genRandomText() {
+        let charDiv = document.querySelector('.genkey');
+        let char = alpha[Math.round(Math.random() * 26)];
+
+        if (char === undefined) {
+            genRandomText();
+            return;
+        }
+        charDiv.innerHTML = char;
+
+        if (!charDiv.classList.contains("begin")) {
+            charDiv.classList.add("begin");
+        }
+    }
+
+    function logKey(e) {
+        if (!e.key) return;
+        let k = e.key.toUpperCase();
+        if (!(k in charMap)) return;
+
+
+        const key = document.querySelector(`div[data-key="${k}"]`);
+        key.classList.add('active');
+
+        if (currDate.iter === 0) {
+            currDate.iter = 1;
+            currDate.time = new Date();
+
+        } else {
+            let currTime = new Date();
+            let timeDifference = currTime - currDate.time;
+
+            charMap[k].time.push(timeDifference);
+            currDate.iter += 1;
+            currDate.time = currTime;
+        }
+
+        updateAverage(totalAverage());
+
+        let screenKey = (accuracy.length === 0) ? k : document.querySelector('.genkey').innerText;
+        let currAccuracy = (k === screenKey) ? 1 : 0;
+        accuracy.push(currAccuracy);
+
+        updateAccuracy();
+        genRandomText();
+
+        let values = establishGradient();
+        let hi = values[0];
+        let lo = values[1];
+
+        const keys = Array.from(document.querySelectorAll('.key'));
+        keys.forEach(key => judgeKey(key, hi, lo));
+    }
+
+    function removeTransition(e) {
+        this.classList.remove('active');
+    }
+
+    const keys = Array.from(document.querySelectorAll('.key'));
+    keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+    window.addEventListener('keydown', logKey);
+
+</script>
+</body>
+</html>
