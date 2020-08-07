@@ -138,7 +138,7 @@
         Try to match the letter displayed on the screen. Correct answers contribute
         to your accuracy score. The speed measurement of each key measures how fast you clicked it from your prior key.
         Keys above your average appear green, below that they appear red. The stronger the color, the farther from the
-        average. <br>
+        average. <br> <br>
         If you would like to restart, reload the page or click the button on the top right. Good Luck!
     </div>
 
@@ -266,6 +266,12 @@
         accuracyDiv.insertAdjacentHTML('beforeend', newDiv);
     }
 
+    function styleAccuracy(accuracyStyle) {
+        let genKey = document.querySelector('.genkey')
+
+        genKey.classList.add(accuracyStyle)
+    }
+
     function judgeKey(key, hi, lo) {
         if (charMap[key.dataset.key].time.length === 0) return;
         keyValue = key.dataset.key
@@ -276,7 +282,6 @@
             key.style['background-color'] = `rgba(129, 178, 154, ${scaled})`
         } else {
             scaled = Math.abs((scaled * 2) - 1)
-            console.log(key, scaled)
             key.style['background-color'] = `rgba(224, 122, 95, ${scaled})`
         }
 
@@ -331,8 +336,11 @@
 
         let screenKey = (accuracy.length === 0) ? k : document.querySelector('.genkey').innerText;
         let currAccuracy = (k === screenKey) ? 1 : 0;
+        let accuracyStyle = (currAccuracy === 1) ? "accurate" : "inaccurate";
+
         accuracy.push(currAccuracy);
 
+        styleAccuracy(accuracyStyle);
         updateAccuracy();
         genRandomText();
 
@@ -344,12 +352,12 @@
         keys.forEach(key => judgeKey(key, hi, lo));
     }
 
-    function removeTransition(e) {
-        this.classList.remove('active');
-    }
-
     const keys = Array.from(document.querySelectorAll('.key'));
-    keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+    const genkey = document.querySelector('.genkey')
+
+    genkey.addEventListener('transitionend', function() {this.classList.remove('accurate', 'inaccurate') })
+    keys.forEach(key => key.addEventListener('transitionend', function() {this.classList.remove('active')}));
+
     window.addEventListener('keydown', logKey);
 
 </script>
