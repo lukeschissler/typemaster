@@ -5,12 +5,13 @@ Typemaster is an in-browser typing challenge generated with vanilla Javascript a
 randomly generated keys and what areas of the keyboard they are strong and weak at. Visual feedback in the form of dynamic color hues alert the user
 of their strong and weak sections. The site is hosted with [github pages](https://pages.github.com/)
 
-
 ## Link
 
 [Take the challenge here!](https://lukeschissler.github.io/typemaster/)
 
 ## Usage
+
+![](example.gif)
 
 When you load the page, click any key to begin the challenge. Continue by typing the key displayed in the center of the screen. As you type, the accuracy of your keystrokes 
 and the speed between keystrokes will be continiously updated to the left. In addition the display keyboard will show the average speed for that key, and green or red
